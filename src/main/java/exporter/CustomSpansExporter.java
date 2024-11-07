@@ -10,26 +10,26 @@ import java.net.URI;
 import java.net.URL;
 import java.util.Collection;
 
-public class CustomJsonExporter implements SpanExporter {
+public class CustomSpansExporter implements SpanExporter {
 
-    private static final String DESTINATION_URL = "http://localhost:24224";
+    private static final String DESTINATION_URL = System.getenv("SPANS_DESTINATION_URL") != null
+            ? System.getenv("SPANS_DESTINATION_URL")
+            : System.getProperty("spans.destination.url", "http://localhost:24224");
     private final ObjectMapper objectMapper = new ObjectMapper();
+    
+    static {
+        System.out.println("CustomSpansExporter: Sending spans to " + DESTINATION_URL);
+    }
 
     @Override
     public CompletableResultCode export(Collection<SpanData> spans) {
         CompletableResultCode result = new CompletableResultCode();
-        System.out.println("CustomJsonExporter: export method called with " + spans.size() + " spans");
 
         try {
             for (SpanData span : spans) {
-                // Отладочное сообщение перед сериализацией
-                System.out.println("CustomJsonExporter: Serializing span " + span.getSpanId());
 
                 String json = objectMapper.writeValueAsString(span);
                 
-                // Проверка JSON перед отправкой
-                System.out.println("CustomJsonExporter: JSON to send: " + json);
-
                 URL url = new URI(DESTINATION_URL).toURL(); 
                 HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                 connection.setRequestMethod("POST");
@@ -42,9 +42,8 @@ public class CustomJsonExporter implements SpanExporter {
                 }
 
                 int responseCode = connection.getResponseCode();
-                if (responseCode == HttpURLConnection.HTTP_OK) {
-                    System.out.println("CustomJsonExporter: Successfully sent span " + span.getSpanId() + " to Fluent Bit");
-                    result.ofSuccess();
+                if (responseCode == HttpURLConnection.HTTP_OK || responseCode == HttpURLConnection.HTTP_CREATED) {
+                    result.succeed();
                 } else {
                     System.err.println("CustomJsonExporter: Failed to send span " + span.getSpanId() + " to Fluent Bit. Response code: " + responseCode);
                     result.fail();

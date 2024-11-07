@@ -1,3 +1,4 @@
 exporter/CustomAutoConfigurationCustomizerProvider.class
-exporter/CustomJsonExporterProvider.class
-exporter/CustomJsonExporter.class
+exporter/CustomMetricsExporter.class
+exporter/CustomSpansExporter.class
+exporter/CustomLogsExporter.class
