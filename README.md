@@ -6,7 +6,7 @@ This is a custom exporter for sending data (traces, metrics, and logs) collected
 
 1. **Download Required Files**
 
-   - Download `CustomTracesMetricsLogsExporter.jar` from the root of the project.
+   - Download `CustomTracesMetricsLogsExporter-0.0.1.jar` from the root of the project.
    - Download `opentelemetry-javaagent.jar` (version 2.9.0) from the root of the project.
 
 2. **Specify Paths to the Files**
@@ -16,14 +16,14 @@ This is a custom exporter for sending data (traces, metrics, and logs) collected
    Use the following JVM arguments to point to the correct locations:
    ```bash
      -javaagent:<path_to>/opentelemetry-javaagent.jar
-     -Dotel.javaagent.extensions=<path_to>/CustomTracesMetricsLogsExporter.jar
+     -Dotel.javaagent.extensions=<path_to>/CustomTracesMetricsLogsExporter-0.0.1.jar
      -Dmetric.interval.minutes=<interval_in_minutes>  # Optional: Specify metric collection interval in minutes (default is 30)
       ```
 
    For example, if you place both files in the root of your project, use:
    ```bash
      -javaagent:./opentelemetry-javaagent.jar
-     -Dotel.javaagent.extensions=./CustomTracesMetricsLogsExporter.jar
+     -Dotel.javaagent.extensions=./CustomTracesMetricsLogsExporter-0.0.1.jar
      -Dmetric.interval.minutes=15
       ```
 
@@ -73,7 +73,7 @@ EXPOSE 8080
 
 ENTRYPOINT ["java", \
             "-javaagent:./opentelemetry-javaagent.jar", \
-            "-Dotel.javaagent.extensions=./CustomTracesMetricsLogsExporter.jar", \
+            "-Dotel.javaagent.extensions=./CustomTracesMetricsLogsExporter-0.0.1.jar", \
             "-Dotel.traces.exporter=none", \
             "-Dotel.metrics.exporter=none", \
             "-Dotel.logs.exporter=none", \
