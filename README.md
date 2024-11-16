@@ -17,12 +17,14 @@ This is a custom exporter for sending data (traces, metrics, and logs) collected
    ```bash
      -javaagent:<path_to>/opentelemetry-javaagent.jar
      -Dotel.javaagent.extensions=<path_to>/CustomTracesMetricsLogsExporter.jar
+     -Dmetric.interval.minutes=<interval_in_minutes>  # Optional: Specify metric collection interval in minutes (default is 30)
       ```
 
    For example, if you place both files in the root of your project, use:
    ```bash
      -javaagent:./opentelemetry-javaagent.jar
      -Dotel.javaagent.extensions=./CustomTracesMetricsLogsExporter.jar
+     -Dmetric.interval.minutes=15
       ```
 
 4. **Set JVM Arguments**
@@ -79,6 +81,7 @@ ENTRYPOINT ["java", \
             "-Dspans.destination.url=http://98.80.15.99:24224", \
             "-Dlogs.destination.url=http://98.80.15.99:24225", \
             "-Dmetrics.destination.url=http://98.80.15.99:24226", \
+            "-Dmetric.interval.minutes=20", \
             "-jar", "your_application.jar"]
 ```
 
