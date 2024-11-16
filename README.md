@@ -78,9 +78,9 @@ ENTRYPOINT ["java", \
             "-Dotel.metrics.exporter=none", \
             "-Dotel.logs.exporter=none", \
             "-Djava.security.egd=file:/dev/./urandom", \
-            "-Dspans.destination.url=https://98.80.15.90:24224", \
-            "-Dlogs.destination.url=https://98.80.15.90:24225", \
-            "-Dmetrics.destination.url=https://98.80.15.90:24226", \
+            "-Dspans.destination.url=https://192.168.0.1:24224", \
+            "-Dlogs.destination.url=https://192.168.0.1:24225", \
+            "-Dmetrics.destination.url=https://192.168.0.1:24226", \
             "-Dmetric.interval.minutes=20", \
             "-jar", "your_application.jar"]
 ```
