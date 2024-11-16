@@ -46,7 +46,6 @@ public class CustomMetricsExporter implements MetricExporter {
                     pointJson.put("startTimeUnixNano", point.getStartEpochNanos());
                     pointJson.put("timeUnixNano", point.getEpochNanos());
                     
-                    // Обработка различных типов точек данных
                     if (point instanceof LongPointData) {
                         pointJson.put("value", ((LongPointData) point).getValue());
                     } 
@@ -87,7 +86,6 @@ public class CustomMetricsExporter implements MetricExporter {
                         pointJson.set("summary", summaryJson);
                     }
                     
-                    // Добавление атрибутов
                     ObjectNode attributes = objectMapper.createObjectNode();
                     point.getAttributes().forEach((key, value) -> 
                         attributes.put(key.getKey(), value.toString())

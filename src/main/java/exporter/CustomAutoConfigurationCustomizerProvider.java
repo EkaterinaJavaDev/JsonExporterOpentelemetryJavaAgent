@@ -21,9 +21,11 @@ public class CustomAutoConfigurationCustomizerProvider implements AutoConfigurat
         
         autoConfiguration.addMeterProviderCustomizer((meterProviderBuilder, config) -> {
             MetricExporter metricExporter = new CustomMetricsExporter();
+            
+            long intervalMinutes = Long.parseLong(System.getProperty("metric.interval.minutes", "30"));
 
             PeriodicMetricReader reader = PeriodicMetricReader.builder(metricExporter)
-                .setInterval(30, TimeUnit.MINUTES)
+                .setInterval(intervalMinutes, TimeUnit.MINUTES)
                 .build();
 
             meterProviderBuilder.registerMetricReader(reader);
