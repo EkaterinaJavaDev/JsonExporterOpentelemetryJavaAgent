@@ -4,14 +4,13 @@ This is a custom exporter for sending data (traces, metrics, and logs) collected
 
 ## How to Use the Custom Exporter
 
-1. **Download Required Files**
-
-## 📥 Download Latest Release
+1. **📥 Download Latest Release**
+   
    [![Download CustomTracesMetricsLogsExporter JAR](https://img.shields.io/badge/Download-CustomTracesMetricsLogsExporter.jar-blue?style=for-the-badge&logo=github)](https://github.com/EkaterinaJavaDev/JsonExporterOpentelemetryJavaAgent/releases/latest/download/CustomTracesMetricsLogsExporter.jar)
 
    [![Download OpenTelemetry Agent(version 2.9.0)](https://img.shields.io/badge/Download-OpenTelemetry--javaagent.jar-green?style=for-the-badge&logo=github)](https://github.com/EkaterinaJavaDev/JsonExporterOpentelemetryJavaAgent/releases/latest/download/opentelemetry-javaagent.jar)
 
-2. **Specify Paths to the Files**
+3. **Specify Paths to the Files**
 
    Save the files anywhere in your project and specify their paths when running the application.
 
