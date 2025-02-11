@@ -6,8 +6,9 @@ This is a custom exporter for sending data (traces, metrics, and logs) collected
 
 1. **Download Required Files**
 
-   - Download `CustomTracesMetricsLogsExporter-0.0.1.jar` from the root of the project.
-   - Download `opentelemetry-javaagent.jar` (version 2.9.0) from the root of the project.
+   - [Download latest CustomTracesMetricsLogsExporter.jar] .(https://github.com/EkaterinaJavaDev/JsonExporterOpentelemetryJavaAgent/releases/latest/download/CustomTracesMetricsLogsExporter.jar)
+
+   - [Download opentelemetry-javaagent.jar (version 2.9.0)] .(https://github.com/EkaterinaJavaDev/JsonExporterOpentelemetryJavaAgent/releases/latest/download/opentelemetry-javaagent.jar)
 
 2. **Specify Paths to the Files**
 
