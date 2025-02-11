@@ -41,10 +41,13 @@ jobs:
           name: built-jar
           path: .
 
+      - name: Find correct built JAR
+        run: mv $(ls CustomTracesMetricsLogsExporter-*.jar | grep -v "original-" | head -n 1) CustomTracesMetricsLogsExporter.jar
+  
       - name: Upload JAR files to GitHub Releases
         uses: softprops/action-gh-release@v2
         with:
           files: |
-            *.jar
+            CustomTracesMetricsLogsExporter.jar
             release-assets/opentelemetry-javaagent.jar
           token: ${{ secrets.GITHUB_TOKEN }}
